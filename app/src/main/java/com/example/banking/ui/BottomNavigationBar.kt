@@ -3,10 +3,9 @@ package com.example.banking.ui
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.AccountCircle
+import androidx.compose.material.icons.rounded.CurrencyRupee
 import androidx.compose.material.icons.rounded.Home
-import androidx.compose.material.icons.rounded.Notifications
-import androidx.compose.material.icons.rounded.Wallet
+import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -27,16 +26,12 @@ val items = listOf<BottomNavigation>(
         icon = Icons.Rounded.Home
     ),
     BottomNavigation(
-        title = "Wallet",
-        icon = Icons.Rounded.Wallet
+        title = "Money",
+        icon = Icons.Rounded.CurrencyRupee
     ),
     BottomNavigation(
-        title = "Notification",
-        icon = Icons.Rounded.Notifications
-    ),
-    BottomNavigation(
-        title = "Account",
-        icon = Icons.Rounded.AccountCircle
+        title = "You",
+        icon = Icons.Rounded.Person
     )
 )
 

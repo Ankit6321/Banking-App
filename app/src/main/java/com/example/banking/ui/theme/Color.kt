@@ -18,3 +18,14 @@ val OrangeStart = Color(0xFFFF8400)
 val OrangeEnd = Color(0xFFFDA357)
 val GreenStart = Color(0xFF118114)
 val GreenEnd = Color(0xFF52D859)
+
+// Theme colors
+val BlueDark = Color(0xFF0D47A1)
+val BlueLight = Color(0xFFAFCEFA)
+
+val GreyDark = Color(0xFF1F1F1F)
+val GreyLight = Color(0xFFF1F3F4)
+val BlueConstant = Color(0xFF5081CE)
+
+val Orange = Color(0xFFFF9800)
+val DarkGreen = Color(0xFF007003)
