@@ -4,19 +4,21 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.banking.ui.HomeScreen
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.example.banking.ui.component.peopleList
+import com.example.banking.ui.screens.HomeScreen
+import com.example.banking.ui.screens.TransactionDetailsScreen
 import com.example.banking.ui.theme.BankingTheme
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,21 +26,37 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BankingTheme {
-                HomeScreen()
+                AppNavigation()
             }
-        }
-    }
-
-    @Composable
-    private fun SetBarColor(color: Color, modifier: Modifier = Modifier) {
-        val systemUiController = rememberSystemUiController()
-
-        SideEffect {
-            systemUiController.setSystemBarsColor(
-                color = color
-            )
         }
     }
 }
 
+@Composable
+fun AppNavigation() {
+    val navController = rememberNavController()
 
+    NavHost(
+        navController = navController,
+        startDestination = "home",
+    ) {
+        composable("home") {
+            HomeScreen(onPersonClick = { personName ->
+                navController.navigate("details/$personName")
+            })
+        }
+        composable(
+            route = "details/{personName}",
+            arguments = listOf(navArgument("personName") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val personName = backStackEntry.arguments?.getString("personName")
+            val person = peopleList.find { it.name == personName }
+            if (person != null) {
+                TransactionDetailsScreen(
+                    person = person,
+                    onBack = { navController.popBackStack() }
+                )
+            }
+        }
+    }
+}

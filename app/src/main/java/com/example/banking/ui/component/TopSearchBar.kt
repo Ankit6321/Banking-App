@@ -1,4 +1,4 @@
-package com.example.banking.ui
+package com.example.banking.ui.component
 
 import android.widget.Toast
 import androidx.compose.animation.AnimatedContent
@@ -6,10 +6,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
-import androidx.compose.animation.with
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -46,7 +43,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -110,7 +106,7 @@ fun TopSearchBar() {
                             Text(
                                 text = targetPlaceholder,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
-                                fontSize = 14.sp,
+                                style = MaterialTheme.typography.bodyMedium,
                                 maxLines = 1
                             )
                         }
@@ -139,7 +135,8 @@ fun TopSearchBar() {
                         unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
                         cursorColor = MaterialTheme.colorScheme.primary
                     ),
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier.fillMaxSize(),
+                    textStyle = MaterialTheme.typography.bodyMedium
                 )
             }
         }

@@ -1,4 +1,4 @@
-package com.example.banking.ui
+package com.example.banking.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -27,7 +27,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 
 @Composable
 fun MainActions() {
@@ -68,9 +67,8 @@ fun MainActionItem(icon: ImageVector, label: String) {
         Text(
             text = label,
             color = MaterialTheme.colorScheme.onBackground,
-            fontSize = 12.sp,
-            textAlign = TextAlign.Center,
-            lineHeight = 14.sp
+            style = MaterialTheme.typography.labelMedium,
+            textAlign = TextAlign.Center
         )
     }
 }
