@@ -1,6 +1,7 @@
 package com.example.banking.ui.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -48,7 +49,8 @@ fun OfferItem(icon: ImageVector, label: String, color: Color) {
             modifier = Modifier
                 .size(56.dp)
                 .clip(CircleShape)
-                .background(color),
+                .background(color)
+                .clickable{},
             contentAlignment = Alignment.Center
         ) {
             Icon(icon, contentDescription = null, tint = Color.White)

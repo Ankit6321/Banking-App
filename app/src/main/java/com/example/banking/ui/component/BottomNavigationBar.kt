@@ -1,5 +1,6 @@
 package com.example.banking.ui.component
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons
@@ -17,6 +18,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.banking.ui.model.BottomNavigation
 
@@ -38,6 +40,7 @@ val items = listOf<BottomNavigation>(
 @Preview
 @Composable
 fun BottomNavigationBar(modifier: Modifier = Modifier) {
+    val context = LocalContext.current
     var selectedTab by remember { mutableStateOf(0) }
     NavigationBar(modifier = modifier) {
         Row(
@@ -46,7 +49,11 @@ fun BottomNavigationBar(modifier: Modifier = Modifier) {
             items.forEachIndexed { index, item ->
                 NavigationBarItem(
                     selected = index == selectedTab,
-                    onClick = { selectedTab = index },
+                    onClick = {
+                        selectedTab = index
+                        if (selectedTab != 0)
+                            Toast.makeText(context, "There's only the home page currently", Toast.LENGTH_SHORT).show()
+                    },
                     icon = {
                         Icon(
                             imageVector = item.icon,

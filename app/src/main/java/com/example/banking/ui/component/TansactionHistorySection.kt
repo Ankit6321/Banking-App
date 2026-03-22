@@ -1,5 +1,6 @@
 package com.example.banking.ui.component
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -45,6 +46,7 @@ fun TransactionRow(icon: ImageVector, title: String) {
             contentDescription = null,
             tint = BlueConstant,
             modifier = Modifier.size(24.dp)
+                .clickable{}
         )
         Spacer(modifier = Modifier.width(16.dp))
         Text(
