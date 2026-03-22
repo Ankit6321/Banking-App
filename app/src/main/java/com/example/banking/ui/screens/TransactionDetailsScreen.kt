@@ -17,6 +17,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.ErrorOutline
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -32,6 +33,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -51,6 +53,7 @@ fun TransactionDetailsScreen(
     person: Person,
     onBack: () -> Unit = {}
 ) {
+    val context = LocalContext.current
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
@@ -67,7 +70,33 @@ fun TransactionDetailsScreen(
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Transparent
-                )
+                ),
+                actions = {
+                    IconButton(onClick = {
+                        val shareText = """
+                            Transaction Details:
+                            ${if (person.lastPayment.paymentDirection == PaymentDirection.TO) "To" else "From"}: ${person.name}
+                            Amount: ${person.lastPayment.amount}
+                            Status: ${person.lastPayment.status.name}
+                            Date: ${person.lastPayment.date} at ${person.lastPayment.time}
+                        """.trimIndent()
+
+                        val sendIntent = android.content.Intent().apply {
+                            action = android.content.Intent.ACTION_SEND
+                            putExtra(android.content.Intent.EXTRA_TEXT, shareText)
+                            type = "text/plain"
+                        }
+
+                        val shareIntent = android.content.Intent.createChooser(sendIntent, null)
+                        context.startActivity(shareIntent)
+                    }) {
+                        Icon(
+                            Icons.Default.Share,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.onBackground
+                        )
+                    }
+                }
             )
         }
     ) {
