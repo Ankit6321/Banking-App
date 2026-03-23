@@ -45,8 +45,9 @@ fun TransactionRow(icon: ImageVector, title: String) {
             icon,
             contentDescription = null,
             tint = BlueConstant,
-            modifier = Modifier.size(24.dp)
-                .clickable{}
+            modifier = Modifier
+                .size(24.dp)
+                .clickable {}
         )
         Spacer(modifier = Modifier.width(16.dp))
         Text(

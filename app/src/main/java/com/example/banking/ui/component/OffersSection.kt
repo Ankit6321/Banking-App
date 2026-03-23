@@ -50,7 +50,7 @@ fun OfferItem(icon: ImageVector, label: String, color: Color) {
                 .size(56.dp)
                 .clip(CircleShape)
                 .background(color)
-                .clickable{},
+                .clickable {},
             contentAlignment = Alignment.Center
         ) {
             Icon(icon, contentDescription = null, tint = Color.White)

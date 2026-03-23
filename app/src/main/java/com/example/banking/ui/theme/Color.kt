@@ -1,6 +1,7 @@
 package com.example.banking.ui.theme
 
 import androidx.compose.ui.graphics.Color
+
 val GreenLight = Color(0xFF118114)
 val BlueDark = Color(0xFF0D47A1)
 val BlueLight = Color(0xFFAFCEFA)

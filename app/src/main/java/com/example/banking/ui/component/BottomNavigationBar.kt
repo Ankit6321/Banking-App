@@ -50,9 +50,12 @@ fun BottomNavigationBar(modifier: Modifier = Modifier) {
                 NavigationBarItem(
                     selected = index == selectedTab,
                     onClick = {
-                        selectedTab = index
-                        if (selectedTab != 0)
-                            Toast.makeText(context, "There's only the home page currently", Toast.LENGTH_SHORT).show()
+                        if (index != 0)
+                            Toast.makeText(
+                                context,
+                                "There's only the home page currently",
+                                Toast.LENGTH_SHORT
+                            ).show()
                     },
                     icon = {
                         Icon(

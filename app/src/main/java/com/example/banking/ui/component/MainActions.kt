@@ -58,7 +58,7 @@ fun MainActionItem(icon: ImageVector, label: String) {
                 .size(56.dp)
                 .clip(RoundedCornerShape(16.dp))
                 .background(MaterialTheme.colorScheme.primary)
-                .clickable{
+                .clickable {
                     Toast.makeText(context, label, Toast.LENGTH_SHORT).show()
                 },
             contentAlignment = Alignment.Center

@@ -1,6 +1,6 @@
 package com.example.banking.ui.screens
 
-import androidx.compose.foundation.BorderStroke
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -54,6 +54,7 @@ fun TransactionDetailsScreen(
     onBack: () -> Unit = {}
 ) {
     val context = LocalContext.current
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
@@ -108,7 +109,7 @@ fun TransactionDetailsScreen(
         ) {
             Box(
                 modifier = Modifier
-                    .size(100.dp)
+                    .size(80.dp)
                     .clip(CircleShape)
                     .background(color = person.color),
                 contentAlignment = Alignment.Center
@@ -122,7 +123,7 @@ fun TransactionDetailsScreen(
                 )
             }
 
-            Spacer(Modifier.height(8.dp))
+            Spacer(Modifier.height(16.dp))
 
             var text: String
             when (person.lastPayment.paymentDirection) {

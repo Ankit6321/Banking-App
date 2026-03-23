@@ -64,7 +64,7 @@ fun BillItem(icon: ImageVector, label: String) {
                 .size(48.dp)
                 .clip(CircleShape)
                 .background(MaterialTheme.colorScheme.primary)
-                .clickable{
+                .clickable {
                     Toast.makeText(context, label, Toast.LENGTH_SHORT).show()
                 },
             contentAlignment = Alignment.Center

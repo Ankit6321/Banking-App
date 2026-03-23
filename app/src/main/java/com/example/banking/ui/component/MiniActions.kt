@@ -55,8 +55,9 @@ fun MiniActionItem(icon: ImageVector, label: String, color: Color) {
     Surface(
         shape = RoundedCornerShape(100),
         color = MaterialTheme.colorScheme.background,
-        modifier = Modifier.height(48.dp)
-            .clickable{
+        modifier = Modifier
+            .height(48.dp)
+            .clickable {
                 Toast.makeText(context, label, Toast.LENGTH_SHORT).show()
             },
         border = BorderStroke(

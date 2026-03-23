@@ -8,7 +8,7 @@ data class PaymentDetail(
     val paymentDirection: PaymentDirection
 )
 
-enum class PaymentDirection{
+enum class PaymentDirection {
     FROM, TO
 }
 
