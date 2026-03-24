@@ -77,7 +77,7 @@ fun TransactionDetailsScreen(
                         val shareText = """
                             Transaction Details:
                             ${if (person.lastPayment.paymentDirection == PaymentDirection.TO) "To" else "From"}: ${person.name}
-                            Amount: ${person.lastPayment.amount}
+                            Amount: ${person.lastPayment.amount} Rs
                             Status: ${person.lastPayment.status.name}
                             Date: ${person.lastPayment.date} at ${person.lastPayment.time}
                         """.trimIndent()

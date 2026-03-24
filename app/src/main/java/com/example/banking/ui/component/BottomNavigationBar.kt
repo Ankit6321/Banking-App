@@ -44,7 +44,7 @@ fun BottomNavigationBar(modifier: Modifier = Modifier) {
     var selectedTab by remember { mutableStateOf(0) }
     NavigationBar(modifier = modifier) {
         Row(
-            modifier = Modifier.background(MaterialTheme.colorScheme.inverseOnSurface)
+            modifier = Modifier.background(MaterialTheme.colorScheme.surfaceVariant)
         ) {
             items.forEachIndexed { index, item ->
                 NavigationBarItem(
